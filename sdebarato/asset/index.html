@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ALOH MIR</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="/your-path-to-fontawesome/css/all.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <div class="box-logo" data-aos="fade-up-right">
+      <img src="imgs/Logo-inicio.png" alt="">
+    </div>
+    <h1>ALOH MIR</h1>
+  </header>
+
+  <nav class="menu">
+    <ul>
+      <li><a href="#">Inicio</a></li>
+      <li><a href="assets/href/Curses.html">Cursos</a></li>
+      <li><a href="assets/href/Films.html">Peliculas</a></li>
+      <!-- <li><a href="assets/href/us.html">Nosotros</a></li> -->
+      <li><a href="assets/href/Contact.html">Contacto</a></li>
+    </ul>
+    <div class="hide">
+      <i class="fa fa-bars" aria-hidden="true"></i> Menu
+    </div>
+  </nav>
+  <main>
+    <div class="main_title">
+      <h2>Inicio</h2>
+    </div>
+    <div style="height: 100vh;">
+
+    </div>
+  </main>
+  <footer>
+    <div class="footer-content">
+      <h3>Fundación MIR</h3>
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non sed quos velit!</p>
+      <ul class="socials">
+        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+        <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+      </ul>
+    </div>
+  </footer>
+  <div class="footer-bottom">
+    <p>Copyright &copy;2021 SPANUWEY.</p>
+  </div>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    $(".hide").on('click', function () {
+      $("nav ul").toggle('slow');
+    });
+    // ----------Menu joso-------------------------
+    $(document).ready(function () {
+      var altura = $('.menu').offset().top;
+      $(window).on('scroll', function () {
+        if ($(window).scrollTop() > altura) {
+          $('.menu').addClass('menu-fixed');
+        } else {
+          $('.menu').removeClass('menu-fixed');
+        }
+      });
+
+    });
+
+    AOS.init();
+  </script>
+
+</body>
+
+</html>

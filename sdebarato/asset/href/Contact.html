@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>S de Barato</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+      
+
+</head>
+
+<body>
+
+    <header>
+      <!--<div class="box-logo">
+            <img src="../../imgs/Logo-contacto.png" alt="">
+        </div>--> 
+        <h1>SPANUWEY</h1>
+    </header>
+
+    <nav class="menu">
+        <ul>
+            <li><a href="../../index.html">Inicio</a></li>
+            <li><a href="./cursos.html">Cursos</a></li>
+            <li><a href="Films.html">Acerca de...</a></li>
+            <!-- <li><a href="us.html">Nosotros</a></li> -->
+            <li style="background: rgb(255, 255, 255); border-radius: 10px 10px 0 0;"><a href="Contact.html"
+                    style="color: #000;">Contacto</a></li>
+            <!-- <li><a href="#">Privacidad</a></li> -->
+        </ul>
+        <div class="hide">
+            <i class="fa fa-bars" aria-hidden="true"></i> Menu
+        </div>
+    </nav>
+    <main class="contenedor">
+        <div class="main_title">
+            <h2>Contacto</h2>
+        </div>
+        <section class="section-form">
+            <div class="container-form">
+                <form action="#" class="form" id="form" autocomplete="off">
+                    <fieldset>
+                        <legend>Envianos un mensaje</legend>
+                        <div class="block form-header-only">
+                            <h2 class="form-title">Contacto</h2>
+                            <div class="alert"></div>
+                        </div>
+                        <div class="block">
+                            <label for="name">Nombre</label>
+                            <input type="text" name="name" placeholder="Name" class="input input-only">
+                        </div>
+                        <div class="block">
+                            <label for="email">Tu correo</label>
+                            <input type="email" name="email" placeholder="Email" class="input input-only">
+                        </div>
+                        <div class="block">
+                            <textarea name="message" id="" cols="12" rows="8" class="input area"
+                                placeholder="Write a message"></textarea>
+                        </div>
+                        <div class="block">
+                            <input type="submit" value="Enviar" class="submit">
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </section>
+
+    </main>
+    <footer>
+        <div class="footer-content">
+            <h3>S.P.A.N.U</h3>
+            <p>Puedes visitar las redes sociales o puedes <a href="https://wa.link/m36w3g">contactarme por WhatsApp</a> </p>
+            <ul class="socials">
+                <li><a href="https://www.facebook.com/profile.php?id=100082226690810&viewas=&show_switched_toast=false&show_switched_tooltip=false&is_tour_dismissed=false&is_tour_completed=false&show_podcast_settings=false&show_community_review_changes=false&should_open_composer=false&badge_type=NEW_MEMBER&show_community_rollback_toast=false&show_community_rollback=false&show_follower_visibility_disclosure=false&bypass_exit_warning=true"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="https://www.instagram.com/origeneop_77/"><i class="fa fa-instagram"></i></a></li>
+            </ul>
+        </div>
+    </footer>
+    <div class="footer-bottom">
+        <p>Copyright &copy;2023 SPANUWEY. </p>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+        $(".hide").on('click', function () {
+            $("nav ul").toggle('slow');
+        });
+        // ----------Menu joso-------------------------
+        $(document).ready(function () {
+            var altura = $('.menu').offset().top;
+            $(window).on('scroll', function () {
+                if ($(window).scrollTop() > altura) {
+                    $('.menu').addClass('menu-fixed');
+                } else {
+                    $('.menu').removeClass('menu-fixed');
+                }
+            });
+
+        });
+
+        (() => {
+
+            const form = document.getElementById('form');
+            const alert = document.querySelector('.alert');
+            const inputName = form.name;
+            const inputEmail = form.email;
+            const inputArea = form.message;
+
+            const rexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
+            const rexEmail = /^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$/
+            const rexMessage = /^.{1,255}$/
+
+            const validar = (input, texto, expresion) => {
+                if (expresion.test(input.value)) {
+                    input.classList.remove('error')
+                    input.classList.add('success');
+                } else {
+                    alert.classList.add('alertError')
+                    alert.textContent = texto;
+
+                    input.classList.remove('success')
+                    input.classList.add('error')
+
+                    setTimeout(() => {
+                        alert.classList.remove('alertError');
+                        alert.textContent = "";
+                    }, 5000);
+
+                }
+            }
+
+            inputName.addEventListener('blur', () => {
+                validar(inputName, 'Nombre incorrecto!', rexName);
+            })
+
+            inputEmail.addEventListener('blur', () => {
+                validar(inputEmail, 'Este gmail está incorrecto!', rexEmail);
+            })
+
+            inputArea.addEventListener('blur', () => {
+                validar(inputArea, 'Mensaje incorrecto!', rexMessage);
+            })
+
+            const send = () => {
+                fetch("https://formsubmit.co/ajax/spanuwey@gmail.com", {
+                        method: "POST",
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            name: inputName.value,
+                            email: inputEmail.value,
+                            message: inputArea.value
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        inputName.classList.remove('success', 'error');
+                        inputEmail.classList.remove('success', 'error');
+                        inputArea.classList.remove('success', 'error');
+                        form.reset();
+                    })
+                    .catch(error => console.log(error));
+            }
+
+            form.addEventListener('submit', e => {
+                e.preventDefault();
+                if (rexName.test(inputName.value) && rexEmail.test(inputEmail.value) && rexMessage.test(
+                        inputArea.value)) {
+
+                    send();
+
+                    alert.classList.add('alertSuccess')
+                    alert.textContent = "Mensaje enviado!";
+
+                    setTimeout(() => {
+                        alert.classList.remove('alertSuccess');
+                        alert.textContent = "";
+                    }, 5000);
+
+                } else {
+                    alert.classList.add('alertError')
+                    alert.textContent = "¡Rellenar el formulario!";
+
+                    setTimeout(() => {
+                        alert.classList.remove('alertError');
+                        alert.textContent = "";
+                    }, 5000);
+                }
+            })
+            /*
+            fetch("https://formsubmit.co/ajax/origeneexploral@gmail.com", {
+            method: "POST",
+            headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+            name: "FormSubmit",
+            message: "I'm from Devro LABS"
+            })
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.log(error)); */
+        })();
+    </script>
+
+
+</body>
+
+</html>
